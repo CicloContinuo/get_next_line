@@ -6,13 +6,33 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 23:48:26 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/06/16 14:34:07 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/06/16 15:10:59 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/get_next_line.h"
 
-char	*get_next_line(int fd)
+char	*ft_read(int fd, char *str)
+{
+	char	*temp;
+	size_t	i;
+
+	temp = (char *)malloc(BUFFER_SIZE + 1)
+	if (!temp)
+		return (NULL);}
+	
+}
+
+int	main(void)
+{
+	static char	*str;
+	int		fd;
+
+	fd = open("prueba/1.txt",O_RDONLY);
+	str = get_next_line(fd);
+	//printf ("%d",fd);
+}
+/*char	*get_next_line(int fd)
 {
 	char *temp;
 
@@ -21,12 +41,7 @@ char	*get_next_line(int fd)
 	temp = (char *)malloc(BUFFER_SIZE + 1);
 	if (!)
 		return (NULL);
-}
-
-int	main(void)
-
-
-}
+}*/
 
 /*
 	primera vez usando listas
