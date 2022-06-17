@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 23:48:26 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/06/16 15:10:59 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/06/17 09:11:57 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_read(int fd, char *str)
 	temp = (char *)malloc(BUFFER_SIZE + 1)
 	if (!temp)
 		return (NULL);}
-	
 }
 
 int	main(void)
