@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 21:49:03 by ciclo             #+#    #+#             */
-/*   Updated: 2022/06/16 22:15:23 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/06/17 09:02:02 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	const char *temp = open("fd/0.txt", );
+	//const char *temp = open("fd/0.txt", );
 	printf ("here");
 	return (0);
 }
