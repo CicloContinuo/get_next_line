@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 08:58:42 by ciclo             #+#    #+#             */
-/*   Updated: 2022/06/17 09:03:16 by ciclo            ###   ########.fr       */
+/*   Created: 2022/06/16 21:49:03 by ciclo             #+#    #+#             */
+/*   Updated: 2022/06/17 13:22:11 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "include/get_next_line.h"
 
-# include <stdio.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <fcntl.h>
-//char	*get_next_line(int fd);
-#endif
+/*int	main(void)
+{
+	//const char	*s;
+	int	fd;
+
+	fd = open("fd/0.txt", O_WRONLY, O_APPEND);
+	//s = read (fd, 3);
+	return (0);
+}
+*/
+
+int	main(void)
+{
+	int	filedesc;
+
+	filedesc = open("fd/0.txt", O_WRONLY | O_APPEND);
+	printf ("%d", filedesc);
+	return (0);
+}

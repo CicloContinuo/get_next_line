@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   h.h                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 21:49:03 by ciclo             #+#    #+#             */
-/*   Updated: 2022/06/17 09:11:44 by ciclo            ###   ########.fr       */
+/*   Created: 2022/06/17 11:39:59 by ciclo             #+#    #+#             */
+/*   Updated: 2022/06/17 13:56:32 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/get_next_line.h"
+#ifndef H_H
+# define H_H
 
-int	main(void)
-{
-	char	*string;
-	int fd = open("fd/0.txt", O_RDONLY);
-	ssize_t i = read (fd, BUFFER_SIZE);
-	return (0);
-}
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+
+char	*ft_read(int filedesc);
+
+#endif

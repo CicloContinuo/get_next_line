@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftataje- <ftataje-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmurgia- <mmurgia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 11:49:44 by ftataje-          #+#    #+#             */
-/*   Updated: 2022/05/24 13:12:37 by ftataje-         ###   ########.fr       */
+/*   Created: 2022/06/07 13:19:18 by mmurgia-          #+#    #+#             */
+/*   Updated: 2022/06/16 13:22:26 by mmurgia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
+# include <unistd.h>
 # include <fcntl.h>
-# include <limits.h>
+# include <stdio.h>
 
-size_t	ft_strlen(char *s);
-char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_cut_save(char *save);
-char	*ft_cut_line(char *save);
-char	*ft_read(int fd, char *save);
+/* get_next_line.c */
 char	*get_next_line(int fd);
+char	*ft_read(int fd, char *str);
+
+/* get_next_line_utils.c */
+size_t	ft_strlen(const char *str);
+char	*ft_strchr(char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif
