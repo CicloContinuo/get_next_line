@@ -3,34 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   example0.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ciclo-d <ciclo-d@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 11:38:10 by ciclo             #+#    #+#             */
-/*   Updated: 2022/06/17 13:59:32 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/06/20 20:36:00 by ciclo-d          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../h.h"
 
-char	*ft_read(int filedesc)
-{
-	char	*buffer;
-	int		read_file;
-
-	buffer = (char *)malloc(sizeof (char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
-	read_file = read (filedesc, buffer, BUFFER_SIZE);
-	return (buffer);
-}
-
 int	main(void)
 {
-	int	filedesc;
+	int		fd;
+	int		bytes;
+	//char *file;
+	char *buffer;
 
-	filedesc = open ("../../txt/0.txt", O_WRONLY, O_APPEND);
-	static char str = ft_read(filedesc);
-	printf ("%s", str);
+	buffer = (char *)malloc(BUFFER_SIZE +1);
+	if (!buffer)
+		return (0);
+	fd = open("fd.txt", O_RDONLY);
+	bytes = read(fd, buffer, BUFFER_SIZE);
+	printf ("%d", bytes);
+	printf ("%s", buffer);
+	free(buffer);
+	close (fd);
 }
 
 /*
