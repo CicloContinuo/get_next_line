@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ejemplo_write.c                                    :+:      :+:    :+:   */
+/*   ejemplo_printf.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ciclo-d <ciclo-d@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 11:10:36 by ciclo             #+#    #+#             */
-/*   Updated: 2022/06/17 11:42:39 by ciclo            ###   ########.fr       */
+/*   Created: 2022/06/17 11:08:34 by ciclo             #+#    #+#             */
+/*   Updated: 2022/06/20 20:43:15 by ciclo-d          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 int	main(void)
 {
-	int	filedesc;
+	int	fd;
 
-	filedesc = open("testfile.txt", O_WRONLY | O_APPEND);
-	if (filedesc < 0)
-		write(2,"There was an e\n");
-	 // strictly not an error, it is allowable for fewer characters
-	// than requested to be written.
+	fd = open("fd/0.txt", O_RDONLY);
+	printf ("%d", fd);
 	return (0);
 }
