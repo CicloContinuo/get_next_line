@@ -6,7 +6,7 @@
 /*   By: ciclo-d <ciclo-d@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/21 15:32:44 by ciclo-d          ###   ########.fr       */
+/*   Updated: 2022/06/21 15:39:19 by ciclo-d          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*full_str;
+	//static char	*full_str;
 	char 		*buffer;
 	int			rd;
 
