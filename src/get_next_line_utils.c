@@ -6,7 +6,7 @@
 /*   By: ciclo-d <ciclo-d@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:31:05 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/21 12:29:48 by ciclo-d          ###   ########.fr       */
+/*   Updated: 2022/06/21 13:00:18 by ciclo-d          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,28 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-
-char	*ft_strjoin(buffer, full_str)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	char	str;
+	char	*str;
 	size_t	i;
+	size_t	j;
 
-	if (!buffer	&& !full_str)
+	if (!s1 && !s2)
 		return (NULL);
-	str = (char *)malloc(ft_strlen(full_str) + 1);
-	if (!str)
-		return (NULL);
+	str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	i = 0;
-	while (str[i] != 0)
-		*full_str++ = *buffer++;
-	return ()
+	j = 0;
+	while (s1[i] != 0)
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != 0)
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	str[i + j] = 0;
+	return (str);
 }
+	

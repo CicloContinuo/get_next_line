@@ -6,7 +6,7 @@
 /*   By: ciclo-d <ciclo-d@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/21 12:21:36 by ciclo-d          ###   ########.fr       */
+/*   Updated: 2022/06/21 13:05:41 by ciclo-d          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*get_next_line(int fd)
 		ft_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	ft_strjoin (buffer, full_str);
-	printf ("%s\n", full_str);
+	printf ("%s92n", full_str);
 	return (buffer);
 }
 
