@@ -3,31 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ciclo-d <ciclo-d@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 21:49:03 by ciclo             #+#    #+#             */
-/*   Updated: 2022/06/17 13:22:11 by ciclo            ###   ########.fr       */
+/*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
+/*   Updated: 2022/06/21 11:36:13 by ciclo-d          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/get_next_line.h"
 
-/*int	main(void)
+char	*get_next_line(int fd)
 {
-	//const char	*s;
-	int	fd;
+	static char	*full_str;
+	char 		*buffer;
+	int			ft_read;
 
-	fd = open("fd/0.txt", O_WRONLY, O_APPEND);
-	//s = read (fd, 3);
-	return (0);
+	if (fd <= 0 || BUFFER_SIZE < 1)
+		return (NULL);
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
+		if (!buffer)
+			return (NULL);
+	while (fd > 0)
+	{
+		ft_read = read(fd, buffer, BUFFER_SIZE);
+	}
+	printf ("%d %s", ft_read, buffer);
+	return (full_str);
 }
-*/
 
 int	main(void)
 {
-	int	filedesc;
 
-	filedesc = open("fd/0.txt", O_WRONLY | O_APPEND);
-	printf ("%d", filedesc);
-	return (0);
+	int		fd;
+
+	fd =  open("txt/fd.txt", O_RDONLY);
+	char *s = get_next_line(fd);
+	printf ("%s", s);
+	close(fd);
 }

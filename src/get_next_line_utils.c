@@ -3,23 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ciclo-d <ciclo-d@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 21:58:35 by ciclo             #+#    #+#             */
-/*   Updated: 2022/06/16 22:08:44 by ciclo            ###   ########.fr       */
+/*   Created: 2022/06/21 11:31:05 by ciclo-d           #+#    #+#             */
+/*   Updated: 2022/06/21 11:31:13 by ciclo-d          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/get_next_line.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	u;
-
-	if (!str)
-		return (0);
-	u = 0;
-	while (str[u])
-		u++;
-	return (u);
-}

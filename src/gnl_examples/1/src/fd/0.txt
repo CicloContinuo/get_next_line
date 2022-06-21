@@ -1,1 +1,0 @@
-hola mundo quiero ser leido soy un file descriptor en accion
