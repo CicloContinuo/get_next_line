@@ -6,7 +6,7 @@
 /*   By: ciclo-d <ciclo-d@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/21 11:36:13 by ciclo-d          ###   ########.fr       */
+/*   Updated: 2022/06/21 15:36:04 by ciclo-d          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*full_str;
+	//static char	*full_str;
 	char 		*buffer;
 	int			ft_read;
 
@@ -23,12 +23,9 @@ char	*get_next_line(int fd)
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 		if (!buffer)
 			return (NULL);
-	while (fd > 0)
-	{
-		ft_read = read(fd, buffer, BUFFER_SIZE);
-	}
-	printf ("%d %s", ft_read, buffer);
-	return (full_str);
+	ft_read = read(fd, buffer, BUFFER_SIZE);
+	printf ("%d ", ft_read);
+	return (buffer);
 }
 
 int	main(void)
