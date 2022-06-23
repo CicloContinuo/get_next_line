@@ -23,18 +23,18 @@ char	*ft_read(int fd, char *str)
 		return (NULL);
 	while (!ft_strchr(buffer, '\n')) //  !ft_strchr
 	{
-		rd = read(fd, buffer, BUFFER_SIZE);
-/*		if (rd == -1)
+		rd = read(fd, buffer, BUFFER_SIZE); // usamos read y lo guardamos en la variuable rd
+		if (rd == -1) // condicion del fallo del read en la lectura
 		{
-			buffer = malloc(sizeof(1));
-			buffer[rd] =  '\0';
-			free(buffer);
-		}*/
-		buffer[rd] = '\0';
+			buffer = malloc(sizeof(1)); //reserva del '\0';
+			buffer[rd] =  '\0'; // ponemos   '\0'
+			free(buffer); //liberamos buffer
+		}
+		buffer[rd] = '\0'; //  ponemos '\0' al final del string.
 		str = ft_strjoin(str, buffer);// aqui estamos usando join, que otra se podria usar//
 	}
-	free(buffer);
-	return (str);
+	free(buffer); // liberamos la memoria reservada para laq varible buffer
+	return (str); // retorno del string
 }
 
 char	*get_next_line(int fd)
@@ -42,10 +42,8 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		*line;
 
-	if (fd <= 0 || BUFFER_SIZE < 1 )
+	if (fd <= 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	//str = ft_read (fd);
-	//while (str != 0)
 	line = ft_read(fd, str);
 	return (line);
 }
