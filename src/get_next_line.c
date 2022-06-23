@@ -15,29 +15,27 @@
 
 char	*ft_read(int fd, char *str)
 {
-	char	*temp;
+	char	*buffer;
 	int		rd;
 
-	temp = (char *)malloc(BUFFER_SIZE + 1);
-	if (!temp)
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buffer)
 		return (NULL);
-	rd = 1;
-	while (!ft_strchr(temp, '\n') && rd != 0)
+	while (rd-- && !ft_strchr(buffer, 'n')) //  !ft_strchr
 	{
-		rd = read(fd, temp, BUFFER_SIZE);
-		if (rd == -1)
+		rd = read(fd, buffer, BUFFER_SIZE);
+/*		if (rd == -1)
 		{
-			temp = malloc(sizeof(1));
-			temp[rd] =  '\0';
-			free(temp);
-		}
-		temp[rd] = '\0';
-		str = ft_strjoin(str, temp);
+			buffer = malloc(sizeof(1));
+			buffer[rd] =  '\0';
+			free(buffer);
+		}*/
+		buffer[rd] = '\0';
+		str = ft_strjoin(str, buffer);// aqui estamos usando join, que otra se podria usar//
 	}
-	free(temp);
+	free(buffer);
 	return (str);
 }
-
 
 char	*get_next_line(int fd)
 {
@@ -46,7 +44,6 @@ char	*get_next_line(int fd)
 
 	if (fd <= 0 || BUFFER_SIZE < 1)
 		return (NULL);
-
 	//str = ft_read (fd);
 	//while (str != 0)
 	line = ft_read(fd, str);
