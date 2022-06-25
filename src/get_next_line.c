@@ -6,28 +6,38 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/25 14:48:25 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/06/25 14:59:51 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/get_next_line.h"
 
-char	*get_next_line(int fd)
+char	*ft_read(int fd)
 {
-	char	*buffer;
-	int		rd;
+	char		*buffer;
+	int			rd;
 
-	if (fd < 0 || BUFFER_SIZE < 0)
-		return (NULL);
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	while (rd--)
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
+		buffer[rd] = 0;
 	}
-	//printf ("%s0", buffer);
+	printf ("%s0", buffer);
+	free(buffer);
 	return (buffer);
+}
+
+char	*get_next_line(int fd)
+{
+	char *str;
+	//char		*line;
+	if (fd < 0 || BUFFER_SIZE < 0)
+		return (NULL);
+	str = ft_read(fd);
+	return (str);
 }
 
 int	main(void)
