@@ -21,7 +21,7 @@ char	*ft_read(int fd, char *str)
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (!ft_strchr(buffer, '\n')) //  !ft_strchr
+	while (!ft_strchr(buffer, '\n')) // !ft_strchr
 	{
 		rd = read(fd, buffer, BUFFER_SIZE); // usamos read y lo guardamos en la variuable rd
 		if (rd == -1) // condicion del fallo del read en la lectura
