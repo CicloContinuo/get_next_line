@@ -6,46 +6,52 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/25 15:00:51 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/06/25 15:04:02 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/get_next_line.h"
-
-char	*ft_read(int fd)
+char	*ft_read(int fd, char *str)
 {
-	char		*buffer;
-	int			rd;
+	char	*buffer;
+	int		rd;
 
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (rd--)
+	while (!ft_strchr(buffer, '\n')) // !ft_strchr
 	{
-		rd = read(fd, buffer, BUFFER_SIZE);
-		buffer[rd] = 0;
+		rd = read(fd, buffer, BUFFER_SIZE); // usamos read y lo guardamos en la variuable rd
+		if (rd == -1) // condicion del fallo del read en la lectura
+		{
+			buffer = malloc(sizeof(1)); //reserva del '\0';
+			buffer[rd] =  '\0'; // ponemos   '\0'
+			free(buffer); //liberamos buffer
+		}
+		buffer[rd] = '\0'; //  ponemos '\0' al final del string.
+		str = ft_strjoin(str, buffer);// aqui estamos usando join, que otra se podria usar//
 	}
-	printf ("%d0\n", rd);
-	free(buffer);
-	return (buffer);
+	free(buffer); // liberamos la memoria reservada para laq varible buffer
+	return (str); // retorno del string
 }
 
 char	*get_next_line(int fd)
 {
-	char *str;
-	//char		*line;
-	if (fd < 0 || BUFFER_SIZE < 0)
+	static char	*str;
+	char		*line;
+
+	if (fd <= 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	str = ft_read(fd);
-	return (str);
+	line = ft_read(fd, str);
+	return (line);
 }
 
 int	main(void)
 {
-	const char	*s;
-	int			fd;
+	int		fd;
 
-	fd = open("txt/fd.txt", O_RDONLY);
-	s = get_next_line(fd);
-	printf("%s\n", s);
+	fd =  open("txt/fd.txt", O_RDONLY);
+	char *s = get_next_line(fd);
+	printf ("%s", s);
+	close(fd);
 }
