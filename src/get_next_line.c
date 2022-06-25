@@ -1,13 +1,12 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo-d <ciclo-d@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/23 15:41:43 by ciclo-d          ###   ########.fr       */
+/*   Updated: 2022/06/25 15:07:20 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +20,20 @@ char	*ft_read(int fd, char *str)
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (!ft_strchr(buffer, '\n')) // !ft_strchr
+	while (!ft_strchr(buffer, '\n'))
 	{
-		rd = read(fd, buffer, BUFFER_SIZE); // usamos read y lo guardamos en la variuable rd
-		if (rd == -1) // condicion del fallo del read en la lectura
+		rd = read(fd, buffer, BUFFER_SIZE);
+		if (rd == -1)
 		{
-			buffer = malloc(sizeof(1)); //reserva del '\0';
-			buffer[rd] =  '\0'; // ponemos   '\0'
-			free(buffer); //liberamos buffer
+			buffer = malloc(sizeof(1));
+			buffer[rd] = '\0';
+			free(buffer);
 		}
-		buffer[rd] = '\0'; //  ponemos '\0' al final del string.
-		str = ft_strjoin(str, buffer);// aqui estamos usando join, que otra se podria usar//
+		buffer[rd] = '\0';
+		str = ft_strjoin(str, buffer);
 	}
-	free(buffer); // liberamos la memoria reservada para laq varible buffer
-	return (str); // retorno del string
+	free(buffer);
+	return (str);
 }
 
 char	*get_next_line(int fd)
@@ -50,10 +49,11 @@ char	*get_next_line(int fd)
 
 int	main(void)
 {
-	int		fd;
+	char const	*s;
+	int			fd;
 
-	fd =  open("txt/fd.txt", O_RDONLY);
-	char *s = get_next_line(fd);
+	fd = open("txt/fd.txt", O_RDONLY);
+	s = get_next_line(fd);
 	printf ("%s", s);
 	close(fd);
 }
