@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/25 14:59:51 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/06/25 15:00:51 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_read(int fd)
 		rd = read(fd, buffer, BUFFER_SIZE);
 		buffer[rd] = 0;
 	}
-	printf ("%s0", buffer);
+	printf ("%d0\n", rd);
 	free(buffer);
 	return (buffer);
 }
