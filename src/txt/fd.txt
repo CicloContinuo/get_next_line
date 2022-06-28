@@ -1,6 +1,6 @@
 pajaros
-gatos
-perros
-cebras
+gatosio
+perrosi
+cebrasi
 lagar*u
 os
