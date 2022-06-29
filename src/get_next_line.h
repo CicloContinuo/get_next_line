@@ -6,13 +6,13 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:44:41 by ciclo             #+#    #+#             */
-/*   Updated: 2022/06/29 12:17:46 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/06/29 14:30:31 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
+# define BUFFER_SIZE 2
 # include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -24,5 +24,6 @@ size_t	ft_strlen(char const	*s);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+//char	*ft_memmove(char *dst, char *src, size_t len);
 
 #endif
