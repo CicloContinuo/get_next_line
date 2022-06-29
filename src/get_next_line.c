@@ -3,31 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/25 14:48:25 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/06/29 11:18:37 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/get_next_line.h"
+#include "get_next_line.h"
 
-char	*get_next_line(int fd)
+char	*next_line(char *str_stc)
 {
-	char	*buffer;
-	int		rd;
+	char	*temp;
+	int		i;
+	int		j;
 
-	if (fd < 0 || BUFFER_SIZE < 0)
+	if (!str_stc)
 		return (NULL);
+	i = 0;
+	while (str_stc[i] != 0 && str_stc[i] != '\n')
+		i++;
+	temp = (char *)malloc(i + 2);
+	if (!temp)
+		return (NULL);
+	j = 0;
+	while (j < i)
+	{
+		temp[j] = str_stc[j];
+		j++;
+	}
+	temp[j] = 0;
+	printf ("temp: %zu\n", strlen(temp));
+	return (temp);
+}
+
+char	*ft_read(int fd, char *str_stc)
+{
+	char		*buffer;
+	ssize_t		rd;
+
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (rd--)
+	rd = 1;
+	while (rd > 0)
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
+		if (rd == -1)
+		{
+			free (buffer);
+			return (NULL);
+		}
+		str_stc = ft_strjoin (str_stc, buffer);
+		ft_strchr (buffer, '\n');
+		break ;
 	}
-	//printf ("%s0", buffer);
+	free (buffer);
 	return (buffer);
+}
+
+char	*get_next_line(int fd)
+{
+	char static	*str_stc;
+	char		*line;
+
+	if (fd < 0 || BUFFER_SIZE < 0)
+		return (NULL);
+	str_stc = (char *)malloc(BUFFER_SIZE + 1);
+	if (!str_stc)
+		return (NULL);
+	str_stc = ft_read(fd, str_stc);
+	line = next_line(str_stc);
+	printf("line : %s\n", line);
+	return (line);
 }
 
 int	main(void)
@@ -37,5 +85,5 @@ int	main(void)
 
 	fd = open("txt/fd.txt", O_RDONLY);
 	s = get_next_line(fd);
-	printf("%s\n", s);
+	printf("main: %s\n", s);
 }
