@@ -6,35 +6,11 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/29 14:32:32 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:37:49 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*next_line(char *str_stc)
-{
-	char	*temp;
-	int		i;
-
-	if (!str_stc)
-		return (NULL);
-	i = 0;
-	while (str_stc[i] != 0 && str_stc[i] != '\n')
-		i++;
-	temp = (char *)malloc(i + 2);
-	if (!temp)
-		return (NULL);
-	i = 0;
-	while ((str_stc[i] != 0 && str_stc[i] != '\n') || str_stc[i] == '\n')
-	{
-		temp[i] = str_stc[i];
-		i++;
-	}
-	temp[i] = 0;
-	free (temp);
-	return (temp);
-}
 
 char	*ft_read(int fd, char *str_stc)
 {
@@ -55,7 +31,7 @@ char	*ft_read(int fd, char *str_stc)
 		}
 		buffer[rd] = 0;
 		str_stc = ft_strjoin(str_stc, buffer);
-		ft_strchr (buffer, '\n');
+		ft_strchr(str_stc, '\n');
 		break ;
 	}
 	free (buffer);
@@ -66,13 +42,21 @@ char	*get_next_line(int fd)
 {
 	static char	*str_stc;
 	char		*line;
+	int			i;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	line = ft_read(fd, str_stc);
-	if (!line)
-		return (NULL);
-	line = next_line(line);
+	i = 0;
+	while (str_stc[i] && str_stc[i] != '\n')
+		i++;
+	line = (char *)malloc((i + 1) * sizeof(char));
+	if (str_stc[i] == '\n')
+	{
+		line[i] = str_stc[i];
+		i++;
+	}
+	line[i] = '\0';
 	return (line);
 }
 

@@ -6,13 +6,13 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 13:44:41 by ciclo             #+#    #+#             */
-/*   Updated: 2022/06/29 14:30:31 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/06/29 15:11:19 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 2
+# define BUFFER_SIZE 3
 # include <string.h>
 # include <stdio.h>
 # include <stdlib.h>

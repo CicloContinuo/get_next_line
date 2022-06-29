@@ -1,6 +1,6 @@
-pajaros
-gatos
-perros
-cebras
-lagar*u
-os
+01
+23
+45
+67
+89
+01
