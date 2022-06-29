@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/29 11:18:37 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/06/29 12:31:31 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ char	*next_line(char *str_stc)
 	if (!temp)
 		return (NULL);
 	j = 0;
-	while (j < i)
+	while (str_stc[j] != 0 && str_stc[j] != '\n')
 	{
 		temp[j] = str_stc[j];
 		j++;
 	}
 	temp[j] = 0;
-	printf ("temp: %zu\n", strlen(temp));
 	return (temp);
 }
 
@@ -46,7 +45,7 @@ char	*ft_read(int fd, char *str_stc)
 	if (!buffer)
 		return (NULL);
 	rd = 1;
-	while (rd > 0)
+	while (rd != 0)
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
 		if (rd == -1)
@@ -59,7 +58,7 @@ char	*ft_read(int fd, char *str_stc)
 		break ;
 	}
 	free (buffer);
-	return (buffer);
+	return (str_stc);
 }
 
 char	*get_next_line(int fd)
@@ -74,16 +73,22 @@ char	*get_next_line(int fd)
 		return (NULL);
 	str_stc = ft_read(fd, str_stc);
 	line = next_line(str_stc);
-	printf("line : %s\n", line);
 	return (line);
 }
 
-int	main(void)
+/*int	main(void)
 {
-	const char	*s;
-	int			fd;
+	int		file;
+	char	*line;
+	int		i;
 
-	fd = open("txt/fd.txt", O_RDONLY);
-	s = get_next_line(fd);
-	printf("main: %s\n", s);
+	file = open("txt/fd.txt", O_RDWR);
+	i = 5;
+	while (i > 0)
+	{
+		line = get_next_line(file);
+		printf("%s\n", line);
+		i--;
+	}
 }
+*/
