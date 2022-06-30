@@ -6,26 +6,12 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/06/28 23:28:31 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/06/30 11:09:34 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-<<<<<<< HEAD
-char	*get_next_line(int fd)
-{
-	char	*buffer;
-	int		rd;
-
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
-		return (0);
-	rd = 0;
-	while (rd > 0)
-		rd = read(fd, buffer, BUFFER_SIZE);
-	printf ("%s\n", buffer);
-=======
 /*char	*ft_exptions(char *str)
 {
 	char	*tmp;
@@ -71,20 +57,11 @@ char	*get_next_line(int fd)
 	}
 	free (buffer);
 	//tmp = ft_exptions(str);
->>>>>>> merge
 	return (buffer);
 }
 
 int	main(void)
 {
-<<<<<<< HEAD
-	int			fd;
-	char const	*s;
-
-	fd = open("txt/fd.txt", O_WRONLY);
-	s = get_next_line(fd);
-	printf ("%s\n", s);
-=======
 	char const	*s;
 	int			fd;
 	int			c;
@@ -97,7 +74,6 @@ int	main(void)
 		printf ("%s\n", s);
 	}
 	close(fd);
->>>>>>> merge
 }
 
 /*
