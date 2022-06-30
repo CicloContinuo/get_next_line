@@ -11,52 +11,73 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/get_next_line.h"
+#include "get_next_line.h"
 
-char	*ft_read(int fd, char *str)
+/*char	*ft_exptions(char *str)
 {
-	char	*temp;
-	int		rd;
+	char	*tmp;
+	int		i;
+	int		j;
 
-	temp = (char *)malloc(BUFFER_SIZE + 1);
-	if (!temp)
+	j = ft_slen(str, '\n');
+	tmp = (char *)malloc(j + 1);
+	if (!tmp)
 		return (NULL);
-	rd = 1;
-	while (!ft_strchr(temp, '\n') && rd != 0)
+	i = 0;
+	while (str[i] != 0 && str[i] != '\n')
 	{
-		rd = read(fd, temp, BUFFER_SIZE);
-		if (rd == -1)
-		{
-			free(temp);
-			return (NULL);
-		}
-		temp[rd] = '\0';
-		str = ft_strjoin(str, temp);
+		tmp[i] = str[i];
+		i++;
 	}
-	free(temp);
-	return (str);
-}
+	return (tmp);
+}*/
 
 char	*get_next_line(int fd)
 {
 	static char	*str;
-	char		*line;
+	char		*buffer;
+	int			rd;
+	//char		*tmp;
 
-	if (fd <= 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-
-	//str = ft_read (fd);
-	//while (str != 0)
-	line = ft_read(fd, str);
-	return (line);
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
+	rd = 1;
+	while (rd > 0)
+	{
+		rd = read(fd, buffer, BUFFER_SIZE);
+		if (rd <= 0)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[rd] = '\0';
+		str = ft_strjoin(str, buffer);
+	}
+	free (buffer);
+	//tmp = ft_exptions(str);
+	return (buffer);
 }
 
 int	main(void)
 {
-	int		fd;
+	char const	*s;
+	int			fd;
+	int			c;
 
-	fd =  open("txt/fd.txt", O_RDONLY);
-	char *s = get_next_line(fd);
-	printf ("%s", s);
+	fd = open("txt/fd.txt", O_RDONLY);
+	c = 1;
+	while (c--)
+	{
+		s = get_next_line(fd);
+		printf ("%s\n", s);
+	}
 	close(fd);
 }
+
+/*
+	los casos en los casos que debemos cotrolar es cuando hay un salto de linea,
+	 ('\n') y cuando es 0 el filedescriprtor
+ */
