@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/25 15:07:20 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/06/27 08:35:46 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ char	*ft_read(int fd, char *str)
 		rd = read(fd, buffer, BUFFER_SIZE);
 		if (rd == -1)
 		{
-			buffer = malloc(sizeof(1));
-			buffer[rd] = '\0';
+			buffer = (char *)malloc(1);
+			buffer[0] = '\0';
 			free(buffer);
 		}
 		buffer[rd] = '\0';
@@ -44,6 +44,8 @@ char	*get_next_line(int fd)
 	if (fd <= 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	line = ft_read(fd, str);
+	if (!line)// en la condicion de arriba ya comprobamos si en el fd hay para leer
+		return (NULL);
 	return (line);
 }
 
@@ -54,6 +56,7 @@ int	main(void)
 
 	fd = open("txt/fd.txt", O_RDONLY);
 	s = get_next_line(fd);
+	
 	printf ("%s", s);
 	close(fd);
 }
