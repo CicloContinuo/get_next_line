@@ -27,9 +27,8 @@ char	*ft_read(int fd, char *str)
 		rd = read(fd, temp, BUFFER_SIZE);
 		if (rd == -1)
 		{
-			temp = malloc(sizeof(1));
-			temp[rd] =  '\0';
 			free(temp);
+			return (NULL);
 		}
 		temp[rd] = '\0';
 		str = ft_strjoin(str, temp);
@@ -37,33 +36,6 @@ char	*ft_read(int fd, char *str)
 	free(temp);
 	return (str);
 }
-
-
-
-/*char	*ft_read_and_save(int fd, char *save)
-{
-	char	*buff;
-	int		read_bytes;
-
-	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buff)
-		return (NULL);
-	read_bytes = 1;
-	while (!ft_strchr(save, '\n') && read_bytes != 0)
-	{
-		read_bytes = read(fd, buff, BUFFER_SIZE);
-		if (read_bytes == -1)
-		{
-			free(buff);
-			return (NULL);
-		}
-		buff[read_bytes] = '\0';
-		save = ft_strjoin(save, buff);
-	}
-		//printf ("%s", save);
-	free(buff);
-	return (save);
-}*/
 
 char	*get_next_line(int fd)
 {
