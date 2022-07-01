@@ -6,65 +6,81 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/07/01 18:32:52 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/07/01 20:30:49 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*char	*ft_exptions(char *str)
+int	ft_count(char *str)
+{
+	int	i;
+
+	if (str == NULL)
+		return (0);
+	i = 0;
+	while (str[i] != '\0' && str[i] != '\n')
+		i++;
+	return (i);
+}
+
+char	*ft_line(char *str)
 {
 	char	*tmp;
 	int		i;
-	int		j;
 
-	j = ft_slen(str, '\n');
-	tmp = (char *)malloc(j + 1);
+	i = ft_count(str);
+	tmp = (char *)malloc(sizeof(char) * i + 2);
 	if (!tmp)
 		return (NULL);
 	i = 0;
-	while (str[i] != 0 && str[i] != '\n')
-	{
+	while (str[i++] != 0 && str[i++] != '\n')
 		tmp[i] = str[i];
-		i++;
-	}
+	while (str[i++] == '\n')
+		tmp[i] += i;
+	tmp[i] = 0;
+	free (tmp);
 	return (tmp);
 }
-*/
+
 char	*ft_read(int fd, char *str)
 {
-	char		*buffer;
-	int			rd;
+	char	*buffer;
+	int		rd;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
-		return (NULL);
-	rd = 1;
-	while (rd != 0 && ft_strchr(buffer, '\n'))
+	rd = BUFFER_SIZE;
+	while (rd)
 	{
+		buffer = (char *)malloc(BUFFER_SIZE + 1);
+		if (!buffer)
+			return (NULL);
 		rd = read(fd, buffer, BUFFER_SIZE);
-		if (rd < 0)
+		if (rd == -1)
 		{
 			free(buffer);
 			return (NULL);
 		}
 		buffer[rd] = '\0';
 		str = ft_strjoin(str, buffer);
+		ft_strchr(str, '\n');
+		break ;
 	}
-	free (buffer);
+	free(buffer);
 	return (str);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*str;
-	char		*tmp;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	tmp = (char *)malloc(BUFFER_SIZE + 1);
-	tmp = ft_read(fd, str);
-	return (tmp);
+	str = ft_read(fd, str);
+	if (str == NULL)
+		return (NULL);
+	line = ft_line(str);
+	return (line);
 }
 
 int	main(void)
@@ -78,7 +94,7 @@ int	main(void)
 	while (c--)
 	{
 		s = get_next_line(fd);
-		printf ("%s\n", s);
+		printf ("MAIN :%s\n", s);
 	}
 	close(fd);
 }

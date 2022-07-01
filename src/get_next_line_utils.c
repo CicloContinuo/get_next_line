@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:31:05 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/30 09:33:03 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/01 19:02:19 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,51 @@ int	ft_slen(char *string, char c)
 		i++;
 	}
 	return (i);
+}
+
+char	*ft_linejoin(char *full)
+{
+	char	*s;
+	int		i;
+	int		j;
+
+	j = ft_slen(full, '\n');
+	if (!full)
+		return (NULL);
+	s = (char *)malloc(j + 2);
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (i < j + 1)
+	{
+		s[i] = full[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}
+
+char	*ft_substr(char *full, int start, int len)
+{
+	char	*s;
+	int		i;
+	int		j;
+
+	if (!ft_strchr(full, '\n'))
+	{
+		free(full);
+		return (NULL);
+	}
+	s = (char *)malloc((len - start + 1) * sizeof(char));
+	if (!s)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (i < start)
+		i++;
+	while (i < len)
+		s[j++] = full[i++];
+	s[j] = '\0';
+	free (full);
+	return (s);
 }
