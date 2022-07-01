@@ -5,58 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 11:04:43 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/27 08:35:46 by ciclo            ###   ########.fr       */
+/*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
+/*   Updated: 2022/07/01 18:20:10 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/get_next_line.h"
+#include "get_next_line.h"
 
-char	*ft_read(int fd, char *str)
+/*char	*ft_exptions(char *str)
 {
-	char	*buffer;
-	int		rd;
+	char	*tmp;
+	int		i;
+	int		j;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
+	j = ft_slen(str, '\n');
+	tmp = (char *)malloc(j + 1);
+	if (!tmp)
 		return (NULL);
-	while (!ft_strchr(buffer, '\n'))
+	i = 0;
+	while (str[i] != 0 && str[i] != '\n')
 	{
-		rd = read(fd, buffer, BUFFER_SIZE);
-		if (rd == -1)
-		{
-			buffer = (char *)malloc(1);
-			buffer[0] = '\0';
-			free(buffer);
-		}
-		buffer[rd] = '\0';
-		str = ft_strjoin(str, buffer);
+		tmp[i] = str[i];
+		i++;
 	}
-	free(buffer);
-	return (str);
-}
+	return (tmp);
+}*/
 
 char	*get_next_line(int fd)
 {
 	static char	*str;
-	char		*line;
+	char		*buffer;
+	int			rd;
+	//char		*tmp;
 
-	if (fd <= 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	line = ft_read(fd, str);
-	if (!line)// en la condicion de arriba ya comprobamos si en el fd hay para leer
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buffer)
 		return (NULL);
-	return (line);
+	rd = 1;
+	while (rd > 0)
+	{
+		rd = read(fd, buffer, BUFFER_SIZE);
+		if (rd <= 0)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[rd] = '\0';
+		str = ft_strjoin(str, buffer);
+	}
+	free (buffer);
+	//tmp = ft_exptions(str);
+	return (buffer);
 }
 
 int	main(void)
 {
 	char const	*s;
 	int			fd;
+	int			c;
 
 	fd = open("txt/fd.txt", O_RDONLY);
-	s = get_next_line(fd);
-	
-	printf ("%s", s);
+	c = 1;
+	while (c--)
+	{
+		s = get_next_line(fd);
+		printf ("%s\n", s);
+	}
 	close(fd);
 }
+
+/*
+	los casos en los casos que debemos cotrolar es cuando hay un salto de linea,
+	 ('\n') y cuando es 0 el filedescriprtor
+ */
