@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:31:05 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/07/05 14:49:19 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:32:45 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ char	*ft_strchr(char *s, int c)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	i;
-	size_t	c;
-	char	*str;
+	char		*str;
+	int			i;
+	int			n;
 
 	if (!s1)
 	{
@@ -59,12 +59,12 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (str == NULL)
 		return (NULL);
 	i = -1;
-	c = 0;
+	n = 0;
 	if (s1)
 		while (s1[++i] != '\0')
 			str[i] = s1[i];
-	while (s2[c] != '\0')
-		str[i++] = s2[c++];
+	while (s2[n] != '\0')
+		str[i++] = s2[n++];
 	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	free(s1);
 	return (str);

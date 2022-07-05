@@ -6,14 +6,12 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:02:15 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/07/05 15:04:40 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/05 19:14:18 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 1
-
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
