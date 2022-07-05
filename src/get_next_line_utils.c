@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:31:05 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/06/30 09:33:03 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/05 14:49:19 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,4 @@ char	*ft_strjoin(char *s1, char *s2)
 	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	free(s1);
 	return (str);
-}
-
-int	ft_slen(char *string, char c)
-{
-	int	i;
-
-	i = 0;
-	if (!string)
-		return (0);
-	while (string[i])
-	{
-		if (string[i] == c)
-			return (i);
-		i++;
-	}
-	return (i);
 }
