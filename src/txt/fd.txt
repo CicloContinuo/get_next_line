@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 pajaros
-gatosio
-perrosi
-cebrasi
-=======
-pajaros 
-ohtrhtrhtrhtrhtrhtrhtrhtrhrthtrhtrh
+dsfdsfdsfdsofsdfdsfdssdfdsfdsfdsfhtffdsfdsfdrhtrhtrhtrhtrhtrhtrhtrhrthtrhtrh
 gatos
 perros
 cebras
->>>>>>> merge
 lagar*u
 os

@@ -6,37 +6,47 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/06/30 11:09:34 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/06/30 12:38:18 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*char	*ft_exptions(char *str)
+char	*ft_exptions(char *str)
 {
 	char	*tmp;
 	int		i;
 	int		j;
 
 	j = ft_slen(str, '\n');
-	tmp = (char *)malloc(j + 1);
+	tmp = (char *)malloc(j + 2);
 	if (!tmp)
 		return (NULL);
 	i = 0;
-	while (str[i] != 0 && str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 	{
 		tmp[i] = str[i];
 		i++;
 	}
+	printf ("antes tmp  %s\n", tmp);
+	printf ("antes%d\n", i);
+	if (tmp[i] == '\n')
+	{
+		tmp[i] = str[i];
+		i++;
+	}
+	//printf ("despues%d\n", i);
+	//printf ("despues tmp%s\n", tmp);
+	tmp[i] = 0;
 	return (tmp);
-}*/
+}
 
 char	*get_next_line(int fd)
 {
 	static char	*str;
 	char		*buffer;
+	char		*tmp;
 	int			rd;
-	//char		*tmp;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
@@ -44,10 +54,10 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	rd = 1;
-	while (rd > 0)
+	while (rd > 0 && (!ft_strchr(buffer, '\n')))
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
-		if (rd <= 0)
+		if (rd < 0)
 		{
 			free(buffer);
 			return (NULL);
@@ -56,8 +66,8 @@ char	*get_next_line(int fd)
 		str = ft_strjoin(str, buffer);
 	}
 	free (buffer);
-	//tmp = ft_exptions(str);
-	return (buffer);
+	tmp = ft_exptions(str);
+	return (tmp);
 }
 
 int	main(void)
@@ -71,7 +81,7 @@ int	main(void)
 	while (c--)
 	{
 		s = get_next_line(fd);
-		printf ("%s\n", s);
+		//printf ("%s\n", s);
 	}
 	close(fd);
 }
