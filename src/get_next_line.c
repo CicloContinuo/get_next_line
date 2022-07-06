@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/07/06 12:07:47 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/06 12:15:08 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ char	*ft_read(char *str, int fd)
 	if (!buffer)
 		return (NULL);
 	rd = BUFFER_SIZE;
-	while (rd > 0 && (!ft_strchr(str, '\n')))
+	while (rd != 0 && (!ft_strchr(str, '\n')))
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
-		if (rd == 0 && str == NULL)
+		if (rd == 0 && str == NULL) // revisar
 			return (ft_free(buffer));
 		if (rd == -1)
 			return (ft_free(buffer));
