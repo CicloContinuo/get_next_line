@@ -6,20 +6,16 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/07/05 19:15:13 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/06 09:21:03 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_count(char *str)
+char	*ft_free(char *buffer)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0' && str[i] != '\n')
-		i++;
-	return (i);
+	free (buffer);
+	return (NULL);
 }
 
 char	*ft_line(char *str)
@@ -27,13 +23,16 @@ char	*ft_line(char *str)
 	char	*tmp;
 	int		i;
 
+	if (!str)
+		return (NULL);
 	i = 0;
-	i = ft_count(str);
-	tmp = (char *)malloc(sizeof(char) * i + 2);
+	while (str[i] && str[i] != '\n')
+		i++;
+	tmp = (char *)malloc(sizeof(char) * (i + 1));
 	if (!tmp)
 		return (NULL);
 	i = 0;
-	while (str[i] != 0 && str[i] != '\n')
+	while (str[i] && str[i] != '\n')
 	{
 		tmp[i] = str[i];
 		i++;
@@ -43,52 +42,29 @@ char	*ft_line(char *str)
 		tmp[i] = str[i];
 		i++;
 	}
-	tmp[i] = 0;
+	tmp[i] = '\0';
 	return (tmp);
 }
 
-char	*ft_read(int fd, char *str)
+char	*ft_read(char *str, int fd)
 {
-	char	*buffer;
-	ssize_t	rd;
+	char		*buffer;
+	ssize_t		rd;
 
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	rd = 1;
-	while (rd != 0 && !ft_strchr(str, '\n'))
+	while (rd != 0 && (!ft_strchr(str, '\n')))
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
+		if (rd == -1)
+			return (ft_free(buffer));
 		buffer[rd] = '\0';
 		str = ft_strjoin(str, buffer);
 	}
-	free(buffer);
+	free (buffer);
 	return (str);
-}
-
-char	*ft_new_str(char *str)
-{
-	char	*tmp;
-	int		j;
-	int		i;
-
-	j = 0;
-	if (!str[j])
-	{
-		free(str);
-		return (NULL);
-	}
-	j = ft_count(str);
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) - j + 1));
-	if (!tmp)
-		return (NULL);
-	j++;
-	i = 0;
-	while (str[j] != '\0')
-		tmp[i++] = str[j++];
-	free (str);
-	tmp[j] = 0;
-	return (tmp);
 }
 
 char	*get_next_line(int fd)
@@ -96,11 +72,11 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		*line;
 
-	if (fd <= 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	str = ft_read(fd, str);
+	str = ft_read(str, fd);
 	line = ft_line(str);
-	str = ft_new_str(str);
+	str = ft_substr(str, ft_slen(line, '\n') + 1, ft_slen(str, '\0'));
 	return (line);
 }
 
@@ -112,12 +88,11 @@ int	main(void)
 	int			c;
 
 	fd = open("txt/fd.txt", O_RDONLY);
-	c = 5;
+	c = 19;
 	while (c--)
 	{
 		s = get_next_line(fd);
 		printf ("MAIN :%s\n", s);
 	}
 	close(fd);
-}
-*/
+}*/
