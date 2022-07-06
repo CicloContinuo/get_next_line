@@ -1,18 +1,1 @@
-Lorem ipsum
-dolor
-sit amet
-consectetur
-adipiscing elit.
-Mauris sed nisl
-vitae purus
-efficitur lobortis at tincidunt eros.
-Nam suscipit purus ac nisi commodo egestas.
-Nam quis orci sagittis, luctus erat vel, molestie est.
-Curabitur auctor ante sed congue blandit.
-Sed faucibus dolor eu turpis dictum efficitur.
-Vestibulum dignissim nibh eget risus lobortis eleifend ut a sem.
-Mauris ac augue viverra, mollis elit quis, imperdiet massa.
-Nam ut magna vel ante sollicitudin ullamcorper.
-Maecenas aliquam leo consequat, consectetur turpis dapibus, semper nisl.
-Quisque dapibus tortor sit amet ante tristique, nec posuere libero semper.
-Vivamus ultricies eros vitae tortor tristique pellentesque.
+06789

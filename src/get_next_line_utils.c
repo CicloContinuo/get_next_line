@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:31:05 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/07/06 09:09:29 by dugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/06 12:11:21 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strjoin(char *full, char *buffer)
 		s[i] = full[i];
 		i++;
 	}
-	while (buffer[j])
+	while (buffer[j] != 0)
 		s[i++] = buffer[j++];
 	free (full);
 	s[i] = '\0';
@@ -62,7 +62,7 @@ char	*ft_substr(char *full, int start, int len)
 	int		i;
 	int		j;
 
-	if (!ft_strchr(full, '\n'))
+	if (!ft_strchr(full, '\n') || start >= len)
 	{
 		free(full);
 		return (NULL);
