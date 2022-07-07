@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 11:31:05 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/07/01 22:56:43 by ciclo            ###   ########.fr       */
+/*   Created: 2022/07/03 20:52:37 by ciclo             #+#    #+#             */
+/*   Updated: 2022/07/04 13:34:08 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
+	i = 0;
 	if (!s)
 		return (0);
 	if (c == '\0')
-		return (&s[ft_strlen(s)]);
-	i = 0;
+		return ((char *)&s[ft_strlen(s)]);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char) c)
-			return (&s[i]);
+			return ((char *)&s[i]);
 		i++;
 	}
 	return (0);
@@ -57,43 +57,71 @@ char	*ft_strchr(char *s, int c)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	size_t	i;
-	size_t	c;
+	int		i;
+	int		j;
 
-	if (!s1)
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (0);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
+		return (0);
+	while (s1[i] != '\0')
 	{
-		s1 = (char *)malloc(1 * sizeof(char));
-		s1[0] = '\0';
+		str[i] = s1[i];
+		i++;
 	}
-	if (!s1 && !s2)
-		return (NULL);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	i = -1;
-	c = 0;
-	if (s1)
-		while (s1[++i] != '\0')
-			str[i] = s1[i];
-	while (s2[c] != '\0')
-		str[i++] = s2[c++];
-	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	free(s1);
+	while (s2[j] != '\0')
+	{
+		str[i + j] = s2[j];
+		i++;
+		j++;
+	}
+	str[i] = '\0';
 	return (str);
 }
 
-int	ft_slen(char *string, char c)
+
+int		ft_slen(char *string, char c)
 {
 	int	i;
 
 	i = 0;
 	if (!string)
 		return (0);
-	while (string[i] != 0)
+	while (string[i])
 	{
 		if (string[i] == c)
 			return (i);
 		i++;
 	}
 	return (i);
+}
+
+char	*ft_linejoin(char *full)
+{
+	char	*s;
+	int		i;
+
+	i = ft_slen(full, '\n');
+	if (!full)
+		return (NULL);
+	s = (char *)malloc(i + 2);
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (full[i])
+	{
+		s[i] = full[i];
+		i++;
+	}
+	{
+		s[i] = full[i];
+		i++;
+	}
+	//printf("%s", s);
+	s[i] = '\0';
+	free (full);
+	return (s);
 }
