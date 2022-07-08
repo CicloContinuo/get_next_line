@@ -6,95 +6,97 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/07/07 00:04:50 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/07/08 12:27:10 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+char	*ft_free(char *buffer)
+{
+	free (buffer);
+	return (NULL);
+}
 
-/*char	*get_next_line(int fd)
+char	*ft_line(char *str)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	while (str[i] != 0 && str[i] != '\n')
+		i++;
+	tmp = (char *)malloc(sizeof (char) * (i + 2));
+	i = 0;
+	while (str[i] != 0 && str[i] != '\n')
+	{
+		tmp[i] = str[i];
+		i++;
+	}
+	if (str[i] == '\n')
+	{
+		tmp[i] = str[i];
+		i++;
+	}
+	tmp[i] = '\0';
+	return (tmp);
+}
+
+char	*ft_read(char *str, int fd)
+{
+	char	*buffer;
+	ssize_t	rd;
+
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	rd = BUFFER_SIZE;
+	while (rd != 0 && (!ft_strchr(str, '\n')))
+	{
+		rd = read(fd, buffer, BUFFER_SIZE);
+		if (rd == 0 && str == NULL) // revisar
+			return (ft_free(buffer));
+		if (rd == -1)
+			return (ft_free(buffer));
+		buffer[rd] = '\0';
+		str = ft_strjoin(str, buffer);
+	}
+	free(buffer);
+	return (str);
+}
+
+char	*ft_sub_str(char *str)
+{
+	char	*tmp;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (str[i] != 0 && str[i] != '\n')
+		i++;
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) - i));
+	if (!tmp)
+		return (NULL);
+	i++;
+	j = 0;
+	while (str[i] != 0)
+		tmp[j++] = str[i++];
+	tmp[j] = 0;
+	free (str);
+	return (tmp);
+}
+
+char	*get_next_line(int fd)
 {
 	static char	*str;
 	char		*line;
 
-	if (BUFFER_SIZE < 1)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
 		return (NULL);
-	str = ft_read(fd, str); //leo y almaceno en la variable estatica
-	//line = ft_strdup(str);// copio en una variable estatica la primera linea
-	//str = ft_substr(str, ft_slen(str, '\n'), ft_slen(str, '\0')); // copia la segunda de la variable estatica
+	str = ft_read(str, fd);
+	if (!str)
+		return (NULL);
+	line = ft_line(str);
+	str = ft_sub_str(str);
 	return (line);
-}*/
-
-/*char	*sub_line(char *str)
-{
-	char	*tmp;
-	int		i;
-	int 	j;
-
-	j = ft_slen(str, '\n');
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) - j + 1));
-	if (!tmp)
-		return (NULL);
-	i = 0;
-	j++;
-	while (str[i] != 0)
-	{
-		tmp[i] = str[j];
-		i++;
-	}
-	//printf ("%s", tmp);
-	tmp[i] = '\0';
-	return (tmp);
 }
-*/
-
-char*ft_read(int fd, char *str)
-{
-	char *buffer;
-	int		rd;
-
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
-		return (NULL);
-	while (rd)
-	{
-		rd = read(fd, buffer, BUFFER_SIZE);
-		buffer[rd] = 0;
-		str = ft_strjoin(str, buffer);
-	}
-
-	return (str);
-}
-char	*get_next_line(int fd)
-{
-	static char	*str;
-
-	if (BUFFER_SIZE < 1)
-		return (NULL);
-	str = ft_read(fd, str);
-	return (str);
-}
-
-/*int	main(void)
-{
-	char	*s;
-	int			fd;
-	int			c;
-
-	fd = open("txt/fd.txt", O_RDONLY);
-	c = 1;
-	while (c--)
-	{
-		s = get_next_line(fd);
-		printf ("MAIN:%s\n", s);
-	}
-	close(fd);
-	return (0);
-}
-*/
-/*
- tenemos que leer x bytes por vez, luego copiarlos a una variable temporal,
-x bytes mientras leemos,
- hasta el final de la primera linea y luego copiar esa linea
- */

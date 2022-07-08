@@ -6,13 +6,39 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 00:14:15 by ciclo             #+#    #+#             */
-/*   Updated: 2022/07/05 00:14:16 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/07/08 12:42:13 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../get_next_line.h"
 
-void	main_menu()
+char	*ft_strnstr(const char *string_b, const char *string_a, size_t n)
+{
+	size_t	i;
+	size_t	j;
+	char	*dst;
+	char	*src;
+
+	i = 0;
+	dst = ((char *)string_b);
+	src = ((char *)string_a);
+	if (*src == 0 || src == 0)
+		return (dst);
+	while (dst[i] && i < n)
+	{
+		j = 0;
+		while (src[j] == dst[i + j] && i + j < n)
+		{
+			if (src[j + 1] == '\0')
+				return (dst + i);
+			j++;
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+void	main_menu(void)
 {
 	printf("		====>MAIN MENU<====\n");
 	printf("	1) Play Game\n");
@@ -21,7 +47,7 @@ void	main_menu()
 	printf("	0) EXIT\n");
 }
 
-void	game_menu()
+void	game_menu(void)
 {
 	printf("		====>GAME<====\n");
 	printf("	1) Say Hello\n");
@@ -33,11 +59,12 @@ void	game_menu()
 	printf("	0) EXIT GAME\n");
 }
 
-void	start_game()
+void	start_game(void)
 {
 	char	*line;
-	int	granny_count = 0;
+	int		granny_count;
 
+	granny_count = 0;
 	game_menu();
 	while ((line = get_next_line(0)))
 	{
@@ -61,16 +88,15 @@ void	start_game()
 					printf("I love you too, honey!\n");
 				else
 					printf("So you don't love ME!? :(\n");
-
 			}
 		}
 		else if (*line == '3')
 			if (granny_count)
-                        {
-                                printf("You LITTLE RAT! Why u scream to grand'ma!!!\n");
-                                continue ;
-                        }
-                        else
+			{
+				printf("You LITTLE RAT! Why u scream to grand'ma!!!\n");
+					continue ;
+			}
+		else
                         {
                                 printf("Tell me son... what's on your mind?\n");
                                 line = get_next_line(0);
