@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/07/08 12:27:10 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/07/22 12:35:05 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*ft_sub_str(char *str)
 	while (str[i] != 0 && str[i] != '\n')
 		i++;
 	tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) - i));
-	if (!tmp)
+	if (!tmp && *str > ++i)
 		return (NULL);
 	i++;
 	j = 0;
