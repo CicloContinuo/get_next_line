@@ -6,19 +6,19 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 12:25:56 by ciclo             #+#    #+#             */
-/*   Updated: 2022/07/22 12:36:22 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/12 19:40:57 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	char	*s;
 	int		fd;
 	int		c;
-
-	fd = open("txt/fd.txt", O_RDONLY);
+	(void)argc;
+	fd = open(argv[1], O_RDONLY);
 	c = 2 ;
 	while (c--)
 	{

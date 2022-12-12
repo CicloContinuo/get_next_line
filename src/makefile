@@ -6,7 +6,7 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/22 13:01:32 by ciclo             #+#    #+#              #
-#    Updated: 2022/07/22 13:21:04 by ciclo            ###   ########.fr        #
+#    Updated: 2022/12/12 19:41:31 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ R = rm -rf
 
 all:
 
-		$(C) $(F) $(SRC) -o $(NAME) && ./$(NAME)
+		$(C) $(F) $(SRC) -o $(NAME) && ./$(NAME) txt/fd.txt
 
 clean:
 
@@ -35,4 +35,4 @@ clean:
 fclean: clean
 
 	clean $(NAME)
-re: 
+re:

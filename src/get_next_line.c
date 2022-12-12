@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/07/22 12:35:05 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/12 19:46:48 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_read(char *str, int fd)
 	if (!buffer)
 		return (NULL);
 	rd = BUFFER_SIZE;
-	while (rd != 0 && (!ft_strchr(str, '\n')))
+	while (rd != 0 && (!ft_find(str, '\n')))
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
 		if (rd == 0 && str == NULL) // revisar
@@ -59,7 +59,7 @@ char	*ft_read(char *str, int fd)
 		if (rd == -1)
 			return (ft_free(buffer));
 		buffer[rd] = '\0';
-		str = ft_strjoin(str, buffer);
+		str = ft_join(str, buffer);
 	}
 	free(buffer);
 	return (str);

@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:31:05 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/07/08 12:27:51 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/12 19:47:54 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_slen(char *string, char c)
 	return (i);
 }
 
-char	*ft_strjoin(char *full, char *buffer)
+char	*ft_join(char *full, char *buffer)
 {
 	char	*s;
 	int		i;
@@ -66,7 +66,7 @@ char	*ft_strjoin(char *full, char *buffer)
 	return (s);
 }
 
-char	*ft_strchr(char *full, char c)
+char	*ft_find(char *full, char c)
 {
 	int	i;
 
