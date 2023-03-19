@@ -20,13 +20,13 @@ int get_next_line(int fd);
 ## HOW TO USE
 ```bash
 git clone git@github.com:dugonzal/get_next_line.git
-cd get_next_line
+cd get_next_line/src
 bash script/make.sh
 ```
 
 ## HOW TO TEST
 ```bash
-bash script/test.sh
+bash src/script/test.sh
 ```
 
 ## AUTHOR
