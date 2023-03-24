@@ -26,9 +26,15 @@ char	*ft_line(char *str)
 	i = 0;
 	while (str[i] != 0 && str[i] != '\n')
 		i++;
+  if (str[i] == '\0')
+  {
+    free (str);
+    return (NULL);
+  }
 	tmp = (char *)malloc(sizeof (char) * (i + 2));
 	i = 0;
-	while (str[i] != 0 && str[i] != '\n')
+  *tmp = '\0';
+  while (str[i] != 0 && str[i] != '\n')
 	{
 		tmp[i] = str[i];
 		i++;
@@ -50,16 +56,15 @@ char	*ft_read(char *str, int fd)
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	rd = BUFFER_SIZE;
-	while (rd != 0 && (!ft_find(str, '\n')))
+	while (!ft_find(str, '\n'))
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
-		if (rd == 0 && str == NULL) // revisar
-			return (ft_free(buffer));
 		if (rd == -1)
 			return (ft_free(buffer));
 		buffer[rd] = '\0';
 		str = ft_join(str, buffer);
+    if (rd < 1)
+      break;
 	}
 	free(buffer);
 	return (str);
@@ -74,13 +79,14 @@ char	*ft_sub_str(char *str)
 	i = 0;
 	while (str[i] != 0 && str[i] != '\n')
 		i++;
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) - i));
-	if (!tmp && *str > ++i)
+  if (!str[i])
+    return (NULL);
+	tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) - i) + 2);
+	if (!tmp)
 		return (NULL);
-	i++;
 	j = 0;
 	while (str[i] != 0)
-		tmp[j++] = str[i++];
+		tmp[j++] = str[++i];
 	tmp[j] = 0;
 	free (str);
 	return (tmp);

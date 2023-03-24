@@ -1,0 +1,205 @@
+==33833== Memcheck, a memory error detector
+==33833== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==33833== Using Valgrind-3.20.0-5147d671e4-20221024 and LibVEX; rerun with -h for copyright info
+==33833== Command: ./gnl
+==33833== Parent PID: 33832
+==33833== 
+--33833-- 
+--33833-- Valgrind options:
+--33833--    --leak-check=full
+--33833--    --show-leak-kinds=all
+--33833--    --track-origins=yes
+--33833--    --verbose
+--33833--    --log-file=valgrind-out.txt
+--33833-- Contents of /proc/version:
+--33833--   Linux version 6.2.8-arch1-1 (linux@archlinux) (gcc (GCC) 12.2.1 20230201, GNU ld (GNU Binutils) 2.40) #1 SMP PREEMPT_DYNAMIC Wed, 22 Mar 2023 22:52:35 +0000
+--33833-- 
+--33833-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--33833-- Page sizes: currently 4096, max supported 4096
+--33833-- Valgrind library directory: /usr/lib/valgrind
+--33833-- Reading syms from /home/ciclo/Documentos/42/get_next_line/src/gnl
+==33833== Downloading debug info for /home/ciclo/Documentos/42/get_next_line/src/gnl...
+==33833== Server query failed: No such file or directory
+--33833-- Reading syms from /usr/lib/ld-linux-x86-64.so.2
+==33833== Downloading debug info for /usr/lib/ld-linux-x86-64.so.2...
+--33833--   Considering /home/ciclo/.cache/debuginfod_client/990e684775b66507dd913951554d83d689684408/debuginfo ..
+--33833--   .. CRC is valid
+==33833== Successfully downloaded debug file for /usr/lib/ld-linux-x86-64.so.2
+--33833-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+==33833== Downloading debug info for /usr/lib/valgrind/memcheck-amd64-linux...
+--33833--   Considering /home/ciclo/.cache/debuginfod_client/d5bc83bd4c60fccb78ac97e9cfbab514c940e103/debuginfo ..
+--33833--   .. CRC is valid
+==33833== Successfully downloaded debug file for /usr/lib/valgrind/memcheck-amd64-linux
+--33833--    object doesn't have a dynamic symbol table
+--33833-- Scheduler: using generic scheduler lock implementation.
+--33833-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==33833== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-33833-by-ciclo-on-???
+==33833== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-33833-by-ciclo-on-???
+==33833== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-33833-by-ciclo-on-???
+==33833== 
+==33833== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==33833== don't want to do, unless you know exactly what you're doing,
+==33833== or are doing some strange experiment):
+==33833==   /usr/lib/valgrind/../../bin/vgdb --pid=33833 ...command...
+==33833== 
+==33833== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==33833==   /path/to/gdb ./gnl
+==33833== and then give GDB the following command
+==33833==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=33833
+==33833== --pid is optional if only one valgrind process is running
+==33833== 
+--33833-- REDIR: 0x4024050 (ld-linux-x86-64.so.2:strlen) redirected to 0x580be0a2 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--33833-- REDIR: 0x4022800 (ld-linux-x86-64.so.2:index) redirected to 0x580be0bc (vgPlain_amd64_linux_REDIR_FOR_index)
+--33833-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+==33833== Downloading debug info for /usr/lib/valgrind/vgpreload_core-amd64-linux.so...
+--33833--   Considering /home/ciclo/.cache/debuginfod_client/6c0b083312688a7afa1588ea636d04bbf7c294f9/debuginfo ..
+--33833--   .. CRC is valid
+==33833== Successfully downloaded debug file for /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--33833-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+==33833== Downloading debug info for /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so...
+--33833--   Considering /home/ciclo/.cache/debuginfod_client/992708f53a5b0fee275ac2e5dbd02487a9a55dd0/debuginfo ..
+--33833--   .. CRC is valid
+==33833== Successfully downloaded debug file for /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+==33833== WARNING: new redirection conflicts with existing -- ignoring it
+--33833--     old: 0x04024050 (strlen              ) R-> (0000.0) 0x580be0a2 vgPlain_amd64_linux_REDIR_FOR_strlen
+--33833--     new: 0x04024050 (strlen              ) R-> (2007.0) 0x04847e20 strlen
+--33833-- REDIR: 0x4022a30 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4848e00 (strcmp)
+--33833-- REDIR: 0x4021c50 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x484c8d0 (mempcpy)
+--33833-- Reading syms from /usr/lib/libc.so.6
+==33833== Downloading debug info for /usr/lib/libc.so.6...
+--33833--   Considering /home/ciclo/.cache/debuginfod_client/4a4bec3d95a1804443e852958fe59ed461135ce9/debuginfo ..
+--33833--   .. CRC is valid
+==33833== Successfully downloaded debug file for /usr/lib/libc.so.6
+==33833== WARNING: new redirection conflicts with existing -- ignoring it
+--33833--     old: 0x04905610 (memalign            ) R-> (1011.0) 0x04847070 memalign
+--33833--     new: 0x04905610 (memalign            ) R-> (1017.0) 0x04847040 aligned_alloc
+==33833== WARNING: new redirection conflicts with existing -- ignoring it
+--33833--     old: 0x04905610 (memalign            ) R-> (1011.0) 0x04847070 memalign
+--33833--     new: 0x04905610 (memalign            ) R-> (1017.0) 0x04847010 aligned_alloc
+==33833== WARNING: new redirection conflicts with existing -- ignoring it
+--33833--     old: 0x04905610 (memalign            ) R-> (1011.0) 0x04847070 memalign
+--33833--     new: 0x04905610 (memalign            ) R-> (1017.0) 0x04847040 aligned_alloc
+==33833== WARNING: new redirection conflicts with existing -- ignoring it
+--33833--     old: 0x04905610 (memalign            ) R-> (1011.0) 0x04847070 memalign
+--33833--     new: 0x04905610 (memalign            ) R-> (1017.0) 0x04847010 aligned_alloc
+--33833-- REDIR: 0x40241f0 (ld-linux-x86-64.so.2:strncmp) redirected to 0x4848630 (strncmp)
+--33833-- REDIR: 0x490b4c0 (libc.so.6:strncasecmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4909880 (libc.so.6:strchrnul) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x49089a0 (libc.so.6:memrchr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4908020 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x491d360 (libc.so.6:wcslen) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x491eb60 (libc.so.6:wcsnlen) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490b7d0 (libc.so.6:strnlen) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490b860 (libc.so.6:strpbrk) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4909910 (libc.so.6:strcmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4908a30 (libc.so.6:memset) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x491d120 (libc.so.6:wcschr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4909800 (libc.so.6:index) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490b890 (libc.so.6:rindex) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x491d1b0 (libc.so.6:wcscmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4908c80 (libc.so.6:stpncpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x491d7e0 (libc.so.6:wmemchr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490b670 (libc.so.6:strncmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4908cf0 (libc.so.6:strcasecmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490ab80 (libc.so.6:strcspn) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x491d240 (libc.so.6:wcscpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4909780 (libc.so.6:strcat) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490b560 (libc.so.6:strncasecmp_l) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4907f20 (libc.so.6:bcmp) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490ab00 (libc.so.6:strcpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4908d90 (libc.so.6:strcasecmp_l) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490b430 (libc.so.6:strlen) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490b710 (libc.so.6:strncpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4908c00 (libc.so.6:stpcpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4908760 (libc.so.6:memmove) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+==33833== Preferring higher priority redirection:
+--33833--     old: 0x049c2600 (__memcpy_avx_unalign) R-> (2018.0) 0x0484a100 __memcpy_avx_unaligned_erms
+--33833--     new: 0x049c2600 (__memcpy_avx_unalign) R-> (2018.1) 0x0484b9d0 memmove
+--33833-- REDIR: 0x4907e90 (libc.so.6:memchr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x490ba50 (libc.so.6:strspn) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4908880 (libc.so.6:mempcpy) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x4908b30 (libc.so.6:rawmemchr) redirected to 0x48361c0 (_vgnU_ifunc_wrapper)
+--33833-- REDIR: 0x49c71f0 (libc.so.6:__strrchr_avx2) redirected to 0x4847800 (rindex)
+--33833-- REDIR: 0x4904850 (libc.so.6:malloc) redirected to 0x4841810 (malloc)
+--33833-- REDIR: 0x4904df0 (libc.so.6:free) redirected to 0x4844200 (free)
+--33833-- REDIR: 0x49c49a0 (libc.so.6:__strchrnul_avx2) redirected to 0x484c3c0 (strchrnul)
+--33833-- REDIR: 0x49c2600 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x484b9d0 (memmove)
+--33833-- REDIR: 0x49c5340 (libc.so.6:__strlen_avx2) redirected to 0x4847d00 (strlen)
+--33833-- REDIR: 0x49c25c0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x484c4d0 (mempcpy)
+==33833== Invalid read of size 1
+==33833==    at 0x109389: ft_sub_str (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094DD: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==  Address 0x4bcb070 is 0 bytes inside a block of size 1 free'd
+==33833==    at 0x484426F: free (vg_replace_malloc.c:884)
+==33833==    by 0x1091E8: ft_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094CA: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==  Block was alloc'd at
+==33833==    at 0x4841888: malloc (vg_replace_malloc.c:393)
+==33833==    by 0x1095D4: ft_join (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10932C: ft_read (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094A1: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833== 
+==33833== Invalid read of size 1
+==33833==    at 0x1093B1: ft_sub_str (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094DD: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==  Address 0x4bcb070 is 0 bytes inside a block of size 1 free'd
+==33833==    at 0x484426F: free (vg_replace_malloc.c:884)
+==33833==    by 0x1091E8: ft_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094CA: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==  Block was alloc'd at
+==33833==    at 0x4841888: malloc (vg_replace_malloc.c:393)
+==33833==    by 0x1095D4: ft_join (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10932C: ft_read (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094A1: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833== 
+==33833== 
+==33833== HEAP SUMMARY:
+==33833==     in use at exit: 0 bytes in 0 blocks
+==33833==   total heap usage: 47 allocs, 47 frees, 1,512,153 bytes allocated
+==33833== 
+==33833== All heap blocks were freed -- no leaks are possible
+==33833== 
+==33833== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==33833== 
+==33833== 1 errors in context 1 of 2:
+==33833== Invalid read of size 1
+==33833==    at 0x1093B1: ft_sub_str (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094DD: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==  Address 0x4bcb070 is 0 bytes inside a block of size 1 free'd
+==33833==    at 0x484426F: free (vg_replace_malloc.c:884)
+==33833==    by 0x1091E8: ft_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094CA: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==  Block was alloc'd at
+==33833==    at 0x4841888: malloc (vg_replace_malloc.c:393)
+==33833==    by 0x1095D4: ft_join (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10932C: ft_read (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094A1: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833== 
+==33833== 
+==33833== 1 errors in context 2 of 2:
+==33833== Invalid read of size 1
+==33833==    at 0x109389: ft_sub_str (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094DD: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==  Address 0x4bcb070 is 0 bytes inside a block of size 1 free'd
+==33833==    at 0x484426F: free (vg_replace_malloc.c:884)
+==33833==    by 0x1091E8: ft_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094CA: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==  Block was alloc'd at
+==33833==    at 0x4841888: malloc (vg_replace_malloc.c:393)
+==33833==    by 0x1095D4: ft_join (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10932C: ft_read (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x1094A1: get_next_line (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833==    by 0x10973A: main (in /home/ciclo/Documentos/42/get_next_line/src/gnl)
+==33833== 
+==33833== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

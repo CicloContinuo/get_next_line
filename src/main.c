@@ -12,20 +12,15 @@
 
 #include "get_next_line.h"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	char	*s;
-	int		fd;
-	int		c;
-	(void)argc;
-	fd = open(argv[1], O_RDONLY);
-	c = 2 ;
-	while (c--)
-	{
-		s = get_next_line(fd);
-		printf("{%s}\n", s);
+
+	while ((s = get_next_line(0)))
+  {
+      printf("{%s}\n", s);
 		free (s);
 	}
-	close(fd);
+	printf("{%s}\n", s);
 	return (0);
 }

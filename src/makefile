@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = gnl.a
+NAME = gnl
 
 SRC = get_next_line.c \
 	get_next_line_utils.c \
@@ -26,7 +26,7 @@ R = rm -rf
 
 all:
 
-		$(C) $(F) $(SRC) -o $(NAME) && ./$(NAME) txt/fd.txt
+		$(C) $(F) $(SRC) -o $(NAME) && ./$(NAME) < txt/fd.txt
 
 clean:
 
@@ -35,4 +35,13 @@ clean:
 fclean: clean
 
 	clean $(NAME)
-re:
+re: fclean all
+
+
+val:
+	valgrind --leak-check=full \
+         --show-leak-kinds=all \
+         --track-origins=yes \
+         --verbose \
+         --log-file=valgrind-out.txt \
+         ./$(NAME) < txt/fd.txt
