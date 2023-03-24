@@ -21,12 +21,12 @@ int get_next_line(int fd);
 ```bash
 git clone git@github.com:dugonzal/get_next_line.git
 cd get_next_line/src
-bash script/make.sh
-```
+make
+``
 
 ## HOW TO TEST
 ```bash
-bash src/script/test.sh
+cd src/ && make
 ```
 
 ## AUTHOR
