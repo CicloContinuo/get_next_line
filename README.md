@@ -25,7 +25,6 @@ make
 ``
 
 ## HOW TO TEST
-```bash
 cd src/ && make
 ```
 
