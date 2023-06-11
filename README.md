@@ -7,7 +7,7 @@ This project is about making a function that returns a line ending with a newlin
 
 ## PROTOTYPE
 ```c
-int get_next_line(int fd);
+char  *get_next_line(int fd);
 ```
 - fd: file descriptor for reading
 - line: The value of what has been read
