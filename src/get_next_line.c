@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Dugonzal <dugonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 23:11:17 by dugonzal          #+#    #+#             */
-/*   Updated: 2022/12/12 19:46:48 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/10/25 21:36:12 by Dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,11 @@ char	*ft_line(char *str)
 	i = 0;
 	while (str[i] != 0 && str[i] != '\n')
 		i++;
-  if (str[i] == '\0')
-  {
-    free (str);
-    return (NULL);
-  }
-	tmp = (char *)malloc(sizeof (char) * (i + 2));
-	i = 0;
-  *tmp = '\0';
+  if (str[i] == 0)
+	return (ft_free(str));	
+  tmp = (char *)malloc(sizeof (char) * (i + 2));
+  i = 0;
+  *tmp = 0;
   while (str[i] != 0 && str[i] != '\n')
 	{
 		tmp[i] = str[i];
@@ -44,7 +41,7 @@ char	*ft_line(char *str)
 		tmp[i] = str[i];
 		i++;
 	}
-	tmp[i] = '\0';
+	tmp[i] = 0;
 	return (tmp);
 }
 
@@ -61,10 +58,10 @@ char	*ft_read(char *str, int fd)
 		rd = read(fd, buffer, BUFFER_SIZE);
 		if (rd == -1)
 			return (ft_free(buffer));
-		buffer[rd] = '\0';
+		buffer[rd] = 0;
 		str = ft_join(str, buffer);
-    if (rd < 1)
-      break;
+		if (rd < 1)
+		  break;
 	}
 	free(buffer);
 	return (str);
@@ -97,7 +94,7 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		*line;
 
-	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
+	if (read(fd, NULL, 0) < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	str = ft_read(str, fd);
 	if (!str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Dugonzal <dugonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:31:05 by ciclo-d           #+#    #+#             */
-/*   Updated: 2022/12/12 19:47:54 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/10/25 21:33:01 by Dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@ int	ft_slen(char *string, char c)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (!string)
 		return (0);
-	while (string[i])
-	{
+	while (string[++i])
 		if (string[i] == c)
 			return (i);
-		i++;
-	}
 	return (i);
 }
 
@@ -62,7 +59,7 @@ char	*ft_join(char *full, char *buffer)
 	while (buffer[j] != 0)
 		s[i++] = buffer[j++];
 	free (full);
-	s[i] = '\0';
+	s[i] = 0;
 	return (s);
 }
 
@@ -72,12 +69,9 @@ char	*ft_find(char *full, char c)
 
 	if (!full)
 		return (NULL);
-	i = 0;
-	while (full[i])
-	{
+	i = -1;
+	while (full[++i])
 		if (full[i] == c)
 			return (full + i);
-		i++;
-	}
 	return (NULL);
 }

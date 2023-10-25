@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
+#    By: Dugonzal <dugonzal@student.42urduliz.com>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/22 13:01:32 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/12 19:41:31 by ciclo            ###   ########.fr        #
+#    Updated: 2023/10/25 21:42:06 by Dugonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,12 @@ all:
 
 clean:
 
-	$(R) $(OBJ)
+	$(R) $@
 
-fclean: clean
+fclean:
 
-	clean $(NAME)
+	rm -rf  $(NAME)
+
 re: fclean all
 
 
